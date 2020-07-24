@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    const characters: Character[] = [
+      {
+        id: 1,
+        name: '羽咲 綾乃',
+        age: 16,
+        height: 151
+      },
+      {
+        id: 2,
+        name: '新垣 なぎさ',
+        age: 18,
+        height: 174
+      },
+      {
+        id: 3,
+        name: '泉 莉子',
+        age: 15
+      }
+    ];
+
+    return (
+      <div>
+        <h1>はねバト</h1>
+        <CharacterList school='北小町高校' characters={characters} />
+      </div>
+    )
+  }
 }
 
 export default App;
