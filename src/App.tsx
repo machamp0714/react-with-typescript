@@ -1,70 +1,23 @@
 import React from 'react';
+import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
-interface TimerState {
-  timeLeft: number
-}
-const LIMIT = 60;
-
-class App extends React.Component<{}, TimerState> {
-  timerId?: NodeJS.Timeout; 
-
-  constructor(props: {}) {
-    super(props)
-    this.state = { timeLeft: LIMIT }
-  }
-
-  componentDidMount() {
-    this.timerId = setInterval(() => {
-      this.tick()
-    }, 1000)
-  }
-
-  componentDidUpdate() {
-    if (this.state.timeLeft === 0) {
-      this.reset()
+const App = () => {
+  const characters: Character[] = [
+    {
+      id: 1,
+      name: '羽咲　綾乃',
+      age: 16,
+      height: 161
     }
-  }
+  ];
 
-  componentWillUnmount() {
-    clearInterval(this.timerId as NodeJS.Timeout)
-  }
-
-  tick = () => {
-    this.setState((prevState) => ({
-      timeLeft: prevState.timeLeft - 1,
-    }));
-  }
-
-  reset = () => {
-    this.setState({ timeLeft: LIMIT })
-  }
-
-  stop = () => {
-    clearInterval(this.timerId as NodeJS.Timeout)
-  }
-
-  start = () => {
-    this.timerId = setInterval(() => {
-      this.tick();
-    }, 1000);
-  }
-
-  render() {
-    const { timeLeft } = this.state;
-    return (
-      <div>
-        <h1>タイマー</h1>
-        <div>
-          <div>TIME</div>
-          {timeLeft}
-        </div>
-        <button onClick={this.reset}>Reset</button>
-        <button onClick={this.stop}>stop</button>
-        <button onClick={this.start}>start</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <h1>はねバト</h1>
+      <CharacterList school='北小町高校' characters={characters} />
+    </div>
+  )
 }
 
 export default App;

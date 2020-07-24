@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { FC } from 'react';
 
 export interface Character {
   id: number
@@ -12,23 +12,15 @@ interface CharacterListProps {
   characters: Character[]
 }
 
-class CharacterList extends Component<CharacterListProps> {
-  render() {
-    const { school, characters } = this.props;
-
-    return (
-      <>
-        <h2>{school}</h2>
-        <ul>
-          {characters.map(character => (
-            <li key={character.id}>
-              {character.name},{character.age},{character.height ? character.height : '???'}
-            </li>
-          ))}
-        </ul>
-      </>
-    )
-  }
-}
+const CharacterList: FC<CharacterListProps> = ({ school = '高校不明', characters }) => (
+  <>
+    <h2>{school}</h2>
+    <ul>
+      {characters.map(c => (
+        <li key={c.id}>{c.name}, {c.age}, {c.height ? c.height : '???'}</li>
+      ))}
+    </ul>
+  </>
+)
 
 export default CharacterList;
