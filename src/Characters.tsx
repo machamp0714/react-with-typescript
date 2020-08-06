@@ -12,6 +12,7 @@ const Characters: FC<CharacterProps> = ({ history, location, match }) => {
   const codes = Object.keys(characterData);
   const targetCode = match.params.code;
   const isLoading = parse(location.search).loading === 'true';
+  console.log(targetCode);
 
   return codes.includes(targetCode) ? (
     <>
@@ -20,10 +21,10 @@ const Characters: FC<CharacterProps> = ({ history, location, match }) => {
       {isLoading ? (
         <p>loading</p>
       ) : (
-        <CharacterList
-          school={characterData[targetCode].school}
-          characters={characterData[targetCode].players})
-        />
+          <CharacterList
+            school={characterData[targetCode].school}
+            characters={characterData[targetCode].players}
+          />
       )}
       <button onClick={() => { history.push('/'); }}>Homeへ</button>
     </>

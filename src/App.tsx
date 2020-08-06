@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './Home';
-import CharacterList from './CharacterList';
+import Characters from './Characters';
 import { Redirect, Route, Switch } from 'react-router';
 
 const App = () => {
@@ -8,7 +8,8 @@ const App = () => {
     <div className="container">
       <Switch>
         <Route path='/' component={Home} />
-        <Route path='/characters/:code' component={CharacterList} />
+        <Route path='/characters/:code' component={Characters} />
+        <Redirect to='/' />
       </Switch>
     </div>
   );
