@@ -1,23 +1,17 @@
 import React from 'react';
-import CharacterList, { Character } from './CharacterList';
-import './App.css';
+import Home from './Home';
+import CharacterList from './CharacterList';
+import { Redirect, Route, Switch } from 'react-router';
 
 const App = () => {
-  const characters: Character[] = [
-    {
-      id: 1,
-      name: '羽咲　綾乃',
-      age: 16,
-      height: 161
-    }
-  ];
-
   return (
-    <div>
-      <h1>はねバト</h1>
-      <CharacterList school='北小町高校' characters={characters} />
+    <div className="container">
+      <Switch>
+        <Route path='/' component={Home} />
+        <Route path='/characters/:code' component={CharacterList} />
+      </Switch>
     </div>
-  )
+  );
 }
 
 export default App;
