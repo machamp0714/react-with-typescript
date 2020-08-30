@@ -1,17 +1,9 @@
 import React from 'react';
-import Home from './Home';
-import Characters from './Characters';
-import { Redirect, Route, Switch } from 'react-router';
+import Counter from './containers/Counter';
 
 const App = () => {
   return (
-    <div className="container">
-      <Switch>
-        <Route path='/' component={Home} />
-        <Route path='/characters/:code' component={Characters} />
-        <Redirect to='/' />
-      </Switch>
-    </div>
+    <Counter />
   );
 }
 

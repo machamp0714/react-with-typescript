@@ -1,30 +1,34 @@
-import React, { FC, useState, useEffect } from 'react';
-import CounterComponent from '../components/Counter';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
-const useTimer = (limitSec: number): [number, () => void] => {
-  const [timeLeft, setTimeLeft] = useState(limitSec);
+import { add, increment, decrement } from '../actions/counter';
+import Counter from '../Counter';
+import { CounterState } from '../reducer';
 
-  const reset = () => {
-    setTimeLeft(limitSec);
-  }
-
-  useEffect(() => {
-    const tick = () => {
-      setTimeLeft(prevTime => (prevTime === 0 ? limitSec : prevTime - 1));
-    };
-    const timerId = setInterval(tick, 1000);
-
-    return () => clearInterval(timerId);
-  }, [limitSec])
-
-  return [timeLeft, reset];
-}
-
-const CounterContainer: FC = () => {
-  const LIMIT = 60;
-  const [timeLeft, reset] = useTimer(LIMIT);
-
-  return <CounterComponent timeLeft={timeLeft} reset={reset} />
+interface StateProps {
+  count: number
 };
 
-export default CounterContainer;
+interface DispatchProps {
+  add: (amount: number) => void;
+  decrement: () => void;
+  increment: () => void;
+}
+
+const mapStateToProps = (state: CounterState): StateProps => ({
+  count: state.count
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  add: amount => dispatch(add(amount)),
+  decrement: () => dispatch(decrement()),
+  increment: () => dispatch(increment())
+});
+
+// const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
+//   bindActionCreators(
+//     { add, decrement, increment },
+//     dispatch
+//   );
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
