@@ -1,9 +1,9 @@
 import React from 'react';
-import Counter from './containers/Counter';
+import Members from './components/Members';
 
 const App = () => {
   return (
-    <Counter />
+    <Members />
   );
 }
 
