@@ -11,7 +11,7 @@ const users = [
   }
 ];
 
-const Members = () => {
+const Members: FC = () => {
   const title = `${capitalize('ruffnote')}の開発メンバー`;
 
   return (
