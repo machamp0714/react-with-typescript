@@ -3,16 +3,20 @@ import { Helmet } from "react-helmet";
 import { Card, Header, Image } from "semantic-ui-react";
 import capitalize from "lodash/capitalize";
 
-const users = [
-  {
-    id: '12345',
-    login: 'machamp0714',
-    avatar_url: '../images/sushi.PNG'
-  }
-];
+import { User } from '../services/github/models';
 
-const Members: FC = () => {
-  const title = `${capitalize('ruffnote')}の開発メンバー`;
+export interface MembersProps {
+  companyName: string;
+  users: User[];
+  isLoading?: boolean;
+}
+
+const Members: FC<MembersProps> = ({
+  companyName = 'ruffnote',
+  users = [],
+  isLoading = false
+}) => {
+  const title = `${capitalize(companyName)}の開発メンバー`;
 
   return (
     <>

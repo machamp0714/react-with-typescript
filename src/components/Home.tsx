@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import capitalize from 'lodash/capitalize';
 import { List } from 'semantic-ui-react';
 
-const companies = ['ruffnote'];
+const companies = ['ruffnote', 'facebook'];
 
 const Home: FC = () => (
   <>

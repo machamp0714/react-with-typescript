@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Helmet } from "react-helmet";
 import { Redirect, Route, Switch } from 'react-router';
-import Members from './components/Members';
+import Members from './containers/Members';
+import Home from './components/Home';
 
 const title = 'いろんな会社のメンバー';
 
@@ -15,6 +16,7 @@ const App: FC = () => (
       <h1>{title}</h1>
     </header>
     <Switch>
+      <Route path='/' component={Home} />
       <Route path='/:companyName/members' component={Members} />
       <Redirect to='/' />
     </Switch>
