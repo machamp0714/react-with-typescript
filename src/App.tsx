@@ -16,9 +16,9 @@ const App: FC = () => (
       <h1>{title}</h1>
     </header>
     <Switch>
-      <Route path='/' component={Home} />
-      <Route path='/:companyName/members' component={Members} />
-      <Redirect to='/' />
+      <Route path="/" exact component={Home} />
+      <Route path="/:companyName/members" component={Members} />
+      <Redirect to="/" />
     </Switch>
   </>
 )

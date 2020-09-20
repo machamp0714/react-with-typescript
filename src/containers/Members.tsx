@@ -8,6 +8,7 @@ import { User } from '../services/github/models';
 import { GithubState } from '../reducer';
 import { getMembers } from '../actions/github';
 
+// Container Componentの役割はPropsをReduxのStoreにマッピングする
 interface StateProps {
   users: User[];
   isLoading?: boolean;

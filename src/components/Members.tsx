@@ -5,7 +5,8 @@ import capitalize from "lodash/capitalize";
 
 import { User } from '../services/github/models';
 
-export interface MembersProps {
+// 大切なのはこの時点で何をPropsとして定義するということ。
+export interface MembersProps { 
   companyName: string;
   users: User[];
   isLoading?: boolean;

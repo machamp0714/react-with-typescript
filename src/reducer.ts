@@ -5,7 +5,7 @@ import { GithubAction } from './actions/github';
 import * as ActionType from './actions/githubConstants';
 import { User } from './services/github/models';
 
-export interface GithubState {
+export interface GithubState { // initStateの型を定義する
   users: User[];
   isLoading: boolean;
   error?: AxiosError | null;
@@ -39,6 +39,8 @@ const githubReducer: Reducer<GithubState, GithubAction> = (
         isLoading: false,
         error: action.payload.error
       }
+    default:
+      return state;
   }
 }
 
