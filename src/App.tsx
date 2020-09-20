@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Redirect, Route, Switch } from 'react-router';
 import Members from './containers/Members';
 import Home from './components/Home';
+import Search from './components/Search';
 
 const title = 'いろんな会社のメンバー';
 
@@ -17,6 +18,7 @@ const App: FC = () => (
     </header>
     <Switch>
       <Route path="/" exact component={Home} />
+      <Route path="/search" component={Search} />
       <Route path="/:companyName/members" component={Members} />
       <Redirect to="/" />
     </Switch>

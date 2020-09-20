@@ -20,6 +20,7 @@ const Home: FC = () => (
         </List.Item>
       ))}
     </List>
+    <Link to='/search'>組織検索</Link>
   </>
 )
 
