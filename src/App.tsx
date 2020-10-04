@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { Redirect, Route, Switch } from 'react-router';
 import Members from './containers/Members';
 import Home from './components/Home';
-import Search from './components/Search';
+import Search from './containers/Search';
 
 const title = 'いろんな会社のメンバー';
 

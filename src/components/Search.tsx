@@ -1,18 +1,23 @@
 import React, { FC, useState } from "react";
+import SearchResults from './SearchResults';
 import { Form, Button } from "semantic-ui-react";
 import { User } from "../services/github/models";
 
 interface SearchProps {
   users: User[];
-  isLoading?: boolean;
+  getMembersStart: (companyName: string) => void
 }
 
-const Search: FC = () => {
+const Search: FC<SearchProps> = ({ users, getMembersStart }) => {
   const [companyName, setCompanyName] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyName(e.target.value);
   };
+
+  const handleSubmit = () => {
+    getMembersStart(companyName);
+  }
 
   return (
     <>
@@ -21,8 +26,11 @@ const Search: FC = () => {
           <label htmlFor="companyName">会社名</label>
           <input type="text" onChange={handleChange} id="companyName" />
         </Form.Field>
+        <Button type="submit" onClick={handleSubmit}>
+          検索
+        </Button>
       </Form>
-      <Button type="submit">検索</Button>
+      <SearchResults users={users} />
     </>
   );
 };

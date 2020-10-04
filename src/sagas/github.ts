@@ -10,7 +10,6 @@ function* runGetMembers(action: ReturnType<typeof getMembers.start>) {
   try {
     const api = getMembersFactory();
     const users = yield call(api, companyName); // call: 外部の非同期処理関数をコールする。
-
     // Effect APIは必ず、yieldの中で使う必要がある。
     yield put(getMembers.succeed({ companyName }, { users })); // put: ActionCreatorを実行して、 ActionをDispatchする。
   } catch (error) {

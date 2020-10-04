@@ -28,14 +28,10 @@ const mapStateToProps = (state: GithubState): StateProps => ({
   isLoading: state.isLoading
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
-  bindActionCreators(
-    {
-      getMembersStart: (companyName: string) =>
-        getMembers.start({ companyName })
-    },
-    dispatch
-  );
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  getMembersStart: (companyName: string) =>
+    dispatch(getMembers.start({ companyName })),
+});
 
 const MembersContainer: FC<EnhancedMembersProps> = ({
   users,
